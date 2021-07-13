@@ -1,0 +1,29 @@
+devices:
+    nx-osv-1:
+        type: 'router'
+        os: 'nxos'
+        platform: n9kv
+        alias: 'uut'
+        credentials:
+            default:
+                username: admin
+                password: admin
+        connections:
+            cli:
+                protocol: ssh
+                ip: "172.25.192.90"
+
+
+    csr1000v-1:
+        type: 'router'
+        os: 'iosxe'
+        platform: asr1k
+        alias: 'helper'
+        credentials:
+            default:
+                username: cisco
+                password: cisco
+        connections:
+            cli:
+                protocol: ssh
+                ip: "172.25.192.90"
