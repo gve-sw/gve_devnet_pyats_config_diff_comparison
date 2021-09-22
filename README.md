@@ -4,6 +4,7 @@ Many customers would like to start automating their testing. In this PoV, we are
 
 ## Contacts
 * Simon Fang (sifang@cisco.com)
+* Joep Remkes (joremkes@cisco.com)
 * Alvaro Escribano (alvescri@cisco.com)
 
 ## Solution Components
@@ -103,19 +104,54 @@ testbed_filename = ''
 
 ## Installation
 
-1. Clone the repository:
+The following commands are executed in the terminal.
 
-```
-git clone (link)
-```
+1. Create and activate a virtual environment for the project:
+   
+        #WINDOWS:
+        $ py -3 -m venv [add_name_of_virtual_environment_here] 
+        $ source [add_name_of_virtual_environment_here]/Scripts/activate
+        #MAC:
+        $ python3 -m venv [add_name_of_virtual_environment_here] 
+        $ source [add_name_of_virtual_environment_here]/bin/activate
+        
+> For more information about virtual environments, please click [here](https://docs.python.org/3/tutorial/venv.html)
 
-2. (optional) Create a virtual environment and activate it (find instructions [here](https://docs.python.org/3/tutorial/venv.html))
 
-3. Create a testbed file. For an example, please see the `testbed_example.yaml`
+2. Access the created virtual environment folder
 
-4. Update the `env_var.py` file in accordance with your testplan and add the devices from your topology. 
+        $ cd [add_name_of_virtual_environment_here]
 
-5. In a terminal, install the requirements with `pip install -r requirements.txt`. 
+3. Clone this repository
+
+        $ git clone [add_link_to_repository_here]
+        
+4. Access the folder `gve_devnet_pyats_config_diff_comparison`
+
+        $ cd gve_devnet_pyats_config_diff_comparison
+        
+5. Create a testbed file. For an example, please see the `testbed_example.yaml`
+
+6. Update the `env_var.py` file in accordance with your testplan and add the devices from your topology. 
+        
+7. Install the dependencies:
+
+        $ pip install -r requirements.txt
+        
+## Usage
+1. We obtain a baseline with the script `get_baseline.py`
+
+        $ python get_baseline.py
+2. Make changes to the devices, e.g., update the firmware of the routers
+
+3. Perform an automated test using pyATS. We will automatically go through the pre-defined testcases. 
+
+        $ easypy test_scripts/compare_changes_job.py -testbed_file [add_name_of_testbed_file]
+
+4. View the logs
+
+        $ pyats logs view
+
 
 ## Workflow
 In this PoV, we will follow the following workflow: 
@@ -126,21 +162,6 @@ In this PoV, we will follow the following workflow:
 
 
 ![IMAGES/0image.png](IMAGES/flow.png)
-
-
-## Usage
-1. We obtain a baseline with the script `get_baseline.py`
-
-        $ python get_baseline.py
-2. Make changes to the devices, e.g., update the firmware of the routers
-
-3. Perform an automated test using pyATS. We will automatically go through the pre-defined testcases. 
-
-        $ easypy test_scripts/compare_changes_job.py -testbed_file testbed.yaml
-
-4. View the logs
-
-        $ pyats logs view
 
 
 # Screenshots

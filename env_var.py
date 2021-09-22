@@ -29,7 +29,7 @@ access_commands = [
     "show ip ospf database"
 ]
 
-# Step 2: Specify the commands that you would like to test on the access devices
+# Step 2: Specify the commands that you would like to test on the core devices
 core_commands = [
     "show ip arp",
     "show ip interface brief",
